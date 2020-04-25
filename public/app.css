@@ -1,0 +1,35 @@
+.navbar-custom .navbar-brand,
+.navbar-custom .navbar-text {
+    color:white;
+}
+
+
+.navbar-custom {
+    background: #0575E6;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #021B79, #0575E6);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #021B79, #0575E6); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+}
+
+.navbar-custom .navbar-nav .nav-link {
+    color: white;
+}
+
+i {
+    color: white;
+}
+
+#form1 {
+    width: 450px;
+    margin: 0 auto;
+}
+
+.bg-custom {
+    background-color: #EEF1EC;
+}
+
+.formBox {
+    border: 1px solid gray;
+    padding: 2%;
+    margin: 0 30%;
+}
