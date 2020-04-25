@@ -40,37 +40,21 @@ route.post("/", Middleware.isLoggedIn, function(req,res) {
             yeah.campgrounds.image = camp.image;
             yeah.campgrounds.description = camp.description;
             yeah.save()
-            profile.findOne({"camping.user": req.user_id},function(err,found) {
+            var camps = {"campId": camp._id, "name": camp.name, "image":camp.image, "description": camp.description, "price": camp.price};
+            profile.findOneAndUpdate({"user.id": req.user._id}, {$push: {camping: camps}}, function(err, OK){
                 if(err) {
                     console.log(err)
                 } else {
-                    found.camping.name = camp.name;
-                    found.camping.image = camp.image;
-                    found.camping.description = camp.description;
-                    found.camping.price = camp.price;
-                    found.save()
+                    console.log(OK)
                     res.redirect("/campgrounds")
 
                 }
-            })
+            });
+            };
 
-
-            // profile.findOne({name: ""},function(err,found){
-            //     if(err) {
-            //         console.log(err)
-            //     } else {
-            //         console.log(found)
-            //         found.camping.name = camp.name;
-            //         found.camping.description = camp.description;
-            //         console.log(found.camping.image)
-            //         found.camping.image = camp.image;
-            //         found.camping.price = camp.price;
-            //         found.save()
-            //     }
-            // })
 
         }
-    })
+    )
     
 })
 // NEW ROUTE

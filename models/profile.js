@@ -3,9 +3,9 @@ var mongoose = require("mongoose");
 var profSchema = new mongoose.Schema({
     name: String,
     proPic: {type:String, default:null},
-    camping :{
+    camping :[{
         
-        id:{
+        campId:{
             type: mongoose.Schema.Types.ObjectId,
             ref: "camping"
         },
@@ -14,7 +14,7 @@ var profSchema = new mongoose.Schema({
         description: String,
         price : Number,
 
-    },
+    }],
     user :{
         id: {
             type:mongoose.Schema.Types.ObjectId,
