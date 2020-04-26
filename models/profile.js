@@ -5,10 +5,6 @@ var profSchema = new mongoose.Schema({
     proPic: {type:String, default:null},
     camping :[{
         
-        campId:{
-            type: mongoose.Schema.Types.ObjectId,
-            ref: "camping"
-        },
         name: String,
         image: String,
         description: String,

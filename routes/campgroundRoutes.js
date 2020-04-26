@@ -40,14 +40,12 @@ route.post("/", Middleware.isLoggedIn, function(req,res) {
             yeah.campgrounds.image = camp.image;
             yeah.campgrounds.description = camp.description;
             yeah.save()
-            var camps = {"campId": camp._id, "name": camp.name, "image":camp.image, "description": camp.description, "price": camp.price};
-            profile.findOneAndUpdate({"user.id": req.user._id}, {$push: {camping: camps}}, function(err, OK){
+            profile.findOneAndUpdate({"user.id": req.user._id}, {$push: {camping: camp}}, function(err, OK){
                 if(err) {
                     console.log(err)
                 } else {
-                    console.log(OK)
+                    
                     res.redirect("/campgrounds")
-
                 }
             });
             };
@@ -111,15 +109,32 @@ route.put("/:id", Middleware.checkOwnership, function(req,res) {
 })
 
 // DELETE
-route.delete("/:id",Middleware.checkOwnership, function(req,res) {
-
+route.delete("/:id",Middleware.isLoggedIn, function(req,res) {   
     camping.findByIdAndDelete(req.params.id, function(err,deleted) {
         if(err){
             console.log(err)
         } else {
-        
-            res.redirect("/campgrounds")    
 
+            profile.findOne({"user._id": req.user_id}, function(err,found) {
+                if(err) {
+                    console.log(err)
+                } else {
+
+                    profile.updateOne( 
+                        {"_id": found._id },
+                        { $pull: { camping : { _id : req.params.id } } },
+                        
+                        function removeConnectionsCB(err, obj) {
+                            if(err) {
+                                console.log(err)
+                            } else {
+                                res.redirect("/campgrounds")
+                            }
+                        });
+                        
+                    
+                }
+            })
         }
     })
 })
