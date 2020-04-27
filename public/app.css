@@ -1,3 +1,15 @@
+footer.jumbotron {
+    background-color: #262525;
+    color: white;
+    height: 250px;
+    padding: 30px;
+    border-radius: 0;
+}
+
+footer a {
+    color: white;
+}
+
 .navbar-custom .navbar-brand,
 .navbar-custom .navbar-text {
     color:white;

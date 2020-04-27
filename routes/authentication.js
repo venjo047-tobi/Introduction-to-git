@@ -29,7 +29,7 @@ route.post("/register", function(req,res) {
                 if(err){
                     req.flash("error", "Profile not saved")
                 } else {
-                   
+                    saved.gender = req.body.gender
                     saved.user.id = user._id;
                     saved.user.username = user.username;
                     saved.save()

@@ -3,26 +3,50 @@
         <div class="row mt-5">
                 <div class="col-3">
                     <div class="card" style="width: 16rem;">
-                      <%if(data == null) {%>
-                        <img src="https://i.imgur.com/IJCvoA6.jpg" class="card-img-top" alt="...">
+                      <%if(data == null && data.gender == "male") {%>
+                        <img src="https://em.wattpad.com/e85d5768e73eb2b21ac669a1be3549003b84d0b8/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f776174747061642d6d656469612d736572766963652f53746f7279496d6167652f315661735531666a4f73387864773d3d2d322e313536303631326235373238393334343138343832373236393637302e6a7067?s=fit&w=720&h=720" class="card-img-top" alt="...">
                         <div class="card-body">
                           <h5 class="card-title text-center"><%=currentUser.username%></h5>
-                          <a href="#" class="btn btn-primary ml-3">Change Profile Picture</a>
+                          <a href="#" class="btn btn-success ml-3">Change Profile Picture</a>
                         </div>
 
                       <%} else { %>
-                          <%if(data.proPic == null) {%>
-                            <img src="https://i.imgur.com/IJCvoA6.jpg" class="card-img-top" alt="...">
+                          <%if(data.proPic == null && data.gender == "male") {%>
+                            <img src="https://em.wattpad.com/e85d5768e73eb2b21ac669a1be3549003b84d0b8/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f776174747061642d6d656469612d736572766963652f53746f7279496d6167652f315661735531666a4f73387864773d3d2d322e313536303631326235373238393334343138343832373236393637302e6a7067?s=fit&w=720&h=720" class="card-img-top" alt="...">
                             <div class="card-body">
                             <h5 class="card-title text-center"><%=data.name%></h5>
-                            <a href="#" class="btn btn-primary ml-3">Change Profile Picture</a>
+                            <a href="#" class="btn btn-success ml-3">Change Profile Picture</a>
                             </div>
 
-                          <%} else {%>
+                          <%} else if(data.gender == "male") {%>
                             <img src="<%=data.proPic%>" class="card-img-top" alt="...">
                             <div class="card-body">
                               <h5 class="card-title text-center"><%=data.name%></h5>
-                              <a href="#" class="btn btn-primary ml-3">Change Profile Picture</a>
+                              <a href="#" class="btn btn-success ml-3">Change Profile Picture</a>
+                            </div>
+
+                          <%}%>
+                      <%}%>
+                      <%if(data == null && data.gender == "female") {%>
+                        <img src="https://i.imgur.com/IJCvoA6.jpg" class="card-img-top" alt="...">
+                        <div class="card-body">
+                          <h5 class="card-title text-center"><%=currentUser.username%></h5>
+                          <a href="#" class="btn btn-success ml-3">Change Profile Picture</a>
+                        </div>
+
+                      <%} else { %>
+                          <%if(data.proPic == null && data.gender == "female") {%>
+                            <img src="https://i.imgur.com/IJCvoA6.jpg" class="card-img-top" alt="...">
+                            <div class="card-body">
+                            <h5 class="card-title text-center"><%=data.name%></h5>
+                            <a href="#" class="btn btn-success ml-3">Change Profile Picture</a>
+                            </div>
+
+                          <%} else if(data.gender == "female") {%>
+                            <img src="<%=data.proPic%>" class="card-img-top" alt="...">
+                            <div class="card-body">
+                              <h5 class="card-title text-center"><%=data.name%></h5>
+                              <a href="#" class="btn btn-success ml-3">Change Profile Picture</a>
                             </div>
 
                           <%}%>
@@ -52,7 +76,9 @@
                                     <div class="card-body">
                                       <h5 class="card-title"><%=data.name%></h5>
                                       <p class="card-text"><%=data.description%></p>
-                                      <a href="#" class="btn btn-success float-right">Go somewhere</a>
+                                      
+
+                                      <a class="btn btn-primary float-right mr-2" href="/campgrounds/<%=data._id%>">View</a>
                                     </div>
                                   </div>
                                 </div>
@@ -70,4 +96,4 @@
 
   
 
-<%-include("../partials/footer") %>
+    <%- include("../partials/normalFooter") %>
