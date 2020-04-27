@@ -1,12 +1,39 @@
 var express = require("express"),
+    multer = require("multer"),
     camping = require("../models/camping"),
     route = express.Router(),
     User  = require("../models/user"),
     comment = require("../models/comment"),
     profile = require("../models/profile")
-    Middleware = require("../middleware")
+    Middleware = require("../middleware"),
 
-// INDEX ROUTE
+    storage = multer.diskStorage({
+        filename: function(req,file,callback){
+            callback(null, Date.now() + file.originalname)
+        }
+    });
+
+var imageFilter = function(req,file,cb) {
+    if(!file.originalname.match(/\.(jpg| jpeg| png| gif)$/i)) {
+        return cb(new Error("Only image format is Allowed"),false);
+    }
+    cb(null,true)
+}
+
+
+var upload = multer(
+    {   storage:storage,
+        fileFilter: imageFilter
+    });
+
+var cloudinary = require("cloudinary");
+    cloudinary.config({
+        cloud_name: "dtk1smnrj",
+        api_key: process.env.api_key,
+        api_secret: process.env.api_secret
+    })
+
+// INDEX ROUTE 
 route.get("/", function(req,res) {
     camping.find({},function(err,camp){
         if(err) {
@@ -19,40 +46,40 @@ route.get("/", function(req,res) {
    
 })
 // CREATE ROUTE
-route.post("/", Middleware.isLoggedIn, function(req,res) {
-    var name = req.body.name
-    var image = req.body.image
-    var desc = req.body.description
+route.post("/", Middleware.isLoggedIn, upload.single("image"), function(req,res) {
     var yeah = req.user
-    var price = req.body.price
-   
-    // var userid = profile.user.id;
-    var newCampgrounds = {name:name, image:image, price:price, description:desc }
-    camping.create(newCampgrounds,function(err,camp) {
-        if(err) {
-            console.log("error")
-        } else {
-            camp.user.id = req.user._id;
-            camp.user.username = req.user.username;
+    cloudinary.uploader.upload(req.file.path, function(result) {
+        req.body.campground.image = result.secure_url
 
-            camp.save()
-            yeah.campgrounds.name = camp.name;
-            yeah.campgrounds.image = camp.image;
-            yeah.campgrounds.description = camp.description;
-            yeah.save()
-            profile.findOneAndUpdate({"user.id": req.user._id}, {$push: {camping: camp}}, function(err, OK){
-                if(err) {
-                    console.log(err)
-                } else {
-                    
-                    res.redirect("/campgrounds")
-                }
-            });
-            };
-
-
-        }
-    )
+        camping.create(req.body.campground,function(err,camp) {
+            if(err) {
+                console.log("error")
+            } else {
+                camp.user.id = req.user._id;
+                camp.user.username = req.user.username;
+    
+                camp.save()
+                yeah.campgrounds.name = camp.name;
+                yeah.campgrounds.image = camp.image;
+                yeah.campgrounds.description = camp.description;
+                yeah.save()
+                profile.findOneAndUpdate({"user.id": req.user._id}, {$push: {camping: camp}}, function(err, OK){
+                    if(err) {
+                        console.log(err)
+                    } else {
+                        
+                        res.redirect("/campgrounds")
+                    }
+                });
+                };
+    
+    
+            }
+        )
+        
+    })
+    
+ 
     
 })
 // NEW ROUTE

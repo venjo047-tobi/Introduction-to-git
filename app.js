@@ -6,6 +6,7 @@ var express               = require("express"),
     flash                 = require("connect-flash"),
     passport              = require("passport"),
     LocalStrategy         = require("passport-local"),
+    dotenv                  = require("dotenv").config()
     passportLocalMongoose = require("passport-local-mongoose"),
     camping               = require("./models/camping"),
     comment               = require("./models/comment"),
