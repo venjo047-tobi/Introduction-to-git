@@ -48,13 +48,17 @@ route.get("/", function(req,res) {
 // CREATE ROUTE
 route.post("/", Middleware.isLoggedIn, upload.single("image"), function(req,res) {
     var yeah = req.user
-    cloudinary.uploader.upload(req.file.path, function(result) {
+    cloudinary.v2.uploader.upload(req.file.path, function(err, result) {
+        if(err) {
+            console.log(err)
+            res.redirect("back")
+        } 
         req.body.campground.image = result.secure_url
-
         camping.create(req.body.campground,function(err,camp) {
             if(err) {
                 console.log("error")
             } else {
+                camp.imageId = result.public_id
                 camp.user.id = req.user._id;
                 camp.user.username = req.user.username;
     
@@ -125,14 +129,36 @@ route.get("/:id/edit", function(req,res) {
 })
 
 // UPDATE
-route.put("/:id", Middleware.checkOwnership, function(req,res) {
-    camping.findByIdAndUpdate(req.params.id, req.body.camps, function(err,updated) {
-        if(err){
-            console.log(err)
-        } else {
-            res.redirect("/campgrounds/" + req.params.id)
-        }
-    })
+route.put("/:id", upload.single("image"), function(req,res) {
+   camping.findById(req.params.id, async function(err,found) {
+       if(err){
+           req.flash("error", "Cannot be Updated")
+           console.log(err)
+       } else {      
+                if(err){
+                    console.log(err)
+                } else {
+                    if (req.file) {
+                        try {
+                            await cloudinary.v2.uploader.destroy(found.imageId);
+                            var result = await cloudinary.v2.uploader.upload(req.file.path);
+                            found.imageId = result.public_id;
+                            found.image = result.secure_url;
+                        } catch(err) {
+                            req.flash("error", err.message);
+                            return res.redirect("back");
+                        }
+                      }
+                      found.name = req.body.name;
+                      found.description = req.body.description;
+                      found.save();
+                      req.flash("success","Successfully Updated!");
+                      res.redirect("/campgrounds/" + found._id);
+                }
+                
+            
+       }
+   })
 })
 
 // DELETE

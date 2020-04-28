@@ -6,15 +6,15 @@ var express               = require("express"),
     flash                 = require("connect-flash"),
     passport              = require("passport"),
     LocalStrategy         = require("passport-local"),
-    dotenv                  = require("dotenv").config()
     passportLocalMongoose = require("passport-local-mongoose"),
     camping               = require("./models/camping"),
     comment               = require("./models/comment"),
     User                  = require("./models/user"),
-    profile               = require("./models/profile")
+    profile               = require("./models/profile"),
     seedDb                = require("./seeds");
 
-    
+var dotenv = require("dotenv").config();
+   
 var commentR = require("./routes/commentRoutes"),
     campGR   = require("./routes/campgroundRoutes"),
     indexR   = require("./routes/authentication"),
