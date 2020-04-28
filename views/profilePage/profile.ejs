@@ -27,7 +27,7 @@
                         </div>
 
                       <%} else { %>
-                          <%if(data.proPic == undefined && data.gender == "male") {%>
+                          <%if(data.proPic == null && data.gender == "male") {%>
                             <img src="https://em.wattpad.com/e85d5768e73eb2b21ac669a1be3549003b84d0b8/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f776174747061642d6d656469612d736572766963652f53746f7279496d6167652f315661735531666a4f73387864773d3d2d322e313536303631326235373238393334343138343832373236393637302e6a7067?s=fit&w=720&h=720" class="card-img-top" alt="...">
                             <div class="card-body">
                             <h5 class="card-title text-center"><%=data.name%></h5>
@@ -83,7 +83,7 @@
                         </div>
 
                       <%} else { %>
-                          <%if(data.proPic == undefined && data.gender == "female") {%>
+                          <%if(data.proPic == null && data.gender == "female") {%>
                             <img src="https://i.imgur.com/IJCvoA6.jpg" class="card-img-top" alt="...">
                             <div class="card-body">
                             <h5 class="card-title text-center"><%=data.name%></h5>

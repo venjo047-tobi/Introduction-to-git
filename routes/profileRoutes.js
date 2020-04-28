@@ -41,7 +41,15 @@ route.get("/campgrounds/profile/:profileid", middleware.isLoggedIn, function(req
         }
     })
 })
-
+route.get("/campgrounds/otherProf/:profId", function(req,res) {
+    profile.findOne({"user.id":req.params.profId}, function(err,found) {
+        if(err){
+            console.log(err)
+        } else {
+            res.render("profilePage/otherProfile", {data:found})
+        }
+    })
+})
 
 route.get("/campgrounds/profile/:profileid/upload", middleware.isLoggedIn, function(req,res) {
     profile.findOne({"user.id": req.user._id}, function(err, found) {
@@ -66,11 +74,18 @@ route.put("/campgrounds/profile/:profileid/upload", middleware.isLoggedIn, uploa
         } else {
             if (req.file) {
                 try {
-                    await cloudinary.v2.uploader.destroy(updated.proPicId);
+                    if(updated.proPic == null) {
+                        var result = await cloudinary.v2.uploader.upload(req.file.path);
+                        updated.proPicId = result.public_id;
+                        updated.proPic = result.secure_url;
+                    } else {
+                        await cloudinary.v2.uploader.destroy(updated.proPicId);
+                        var result = await cloudinary.v2.uploader.upload(req.file.path);
+                        updated.proPicId = result.public_id;
+                        updated.proPic = result.secure_url;
+                    }
 
-                    var result = await cloudinary.v2.uploader.upload(req.file.path);
-                    updated.proPicId = result.public_id;
-                    updated.proPic = result.secure_url;
+
                 } catch(err) {
                     req.flash("error", err.message);
                     return res.redirect("back");
@@ -80,7 +95,7 @@ route.put("/campgrounds/profile/:profileid/upload", middleware.isLoggedIn, uploa
 
               updated.save();
               req.flash("success","Successfully Updated!");
-              res.redirect("/campgrounds");
+              res.redirect("/campgrounds/profile/" + req.params.profileid);
         }
 
     })
