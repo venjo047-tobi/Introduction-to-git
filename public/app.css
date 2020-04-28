@@ -9,6 +9,15 @@ footer.jumbotron {
 footer a {
     color: white;
 }
+.indent {
+    text-indent: 40px;
+}
+
+.imgCampground .card img {
+    width: 100%; /* You can set the dimensions to whatever you want */
+    height: 300px;
+    object-fit: cover;
+}
 
 .navbar-custom .navbar-brand,
 .navbar-custom .navbar-text {
@@ -29,6 +38,10 @@ footer a {
 
 i {
     color: white;
+}
+
+.showButtons {
+    float: right;
 }
 
 #form1 {

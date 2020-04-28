@@ -3,7 +3,8 @@ var mongoose = require("mongoose");
 var profSchema = new mongoose.Schema({
     name: String,
     gender :String,
-    proPic: {type:String, default:null},
+    proPic: String,
+    proPicId: String,
     camping :[{
         
         name: String,

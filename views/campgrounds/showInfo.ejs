@@ -15,26 +15,47 @@
             <div class="card" style="width: 100%;">
                 <img src="<%= campground.image %>" class="card-img-top" alt="...">
                 <div class="card-body">
-                  <h5 class=" float-right card-title">$9.00/Night</h5>
                   <h4 class="card-text"><a href=""><%= campground.name %></a></h4>
-                  <p class="card-text lead">Submitted by: <a href=""> <%=campground.user.username %></a></p>
+                  <div class="showButtons">
+                    <% if(currentUser && currentUser._id.equals(campground.user.id) ) { %>
+                      <a class="btn btn-warning" href="/campgrounds/<%=campground._id %>/edit">Edit Post</a>
+                      <form action="/campgrounds/<%=campground._id%>?_method=DELETE" method="POST" style="display: inline;">
+                          <button class="btn btn-danger">Delete</button>
+                      </form>
+                    <% } else { %>
+  
+                    <% } %>
+                  </div>
+                  <p class="Address my-0">At: <%=campground.location%></p>
+                  <p class="my-0">Submitted by: <a href=""> <%=campground.user.username %></a></p>
 
-                  <p><%= campground.description %> </p>
+                  <hr>
 
-                  <% if(currentUser && currentUser._id.equals(campground.user.id) ) { %>
-                    <a class="btn btn-warning" href="/campgrounds/<%=campground._id %>/edit">Edit Campground</a>
-                    <form action="/campgrounds/<%=campground._id%>?_method=DELETE" method="POST" style="display: inline;">
-                        <button class="btn btn-danger">Delete</button>
-                    </form>
-                  <% } else { %>
 
-                  <% } %>
+                  <p class="">Description: <br> <%= campground.description %> </p>
+
+
                 </div>
               </div>
               <div class="card mt-1 bg-custom">
                 <div class="card-body">
-                  <a class="btn btn-success float-right" href="/campgrounds/<%=campground._id %>/comment/new">Add New Comment</a>
-                  
+                  <form action="/campgrounds/<%= campground._id %>/comment" method="POST" id="form2">
+                    <div class="container">
+                        <div class="form-group row">           
+                            <div class="col-12">
+                              <input type="text" class="form-control" name="comment[text]" placeholder="Comment">
+                            </div>
+                        </div>
+                
+                
+                        <div class="form-group row">           
+                            <div class="col-12">
+                              <button class="btn btn-primary btn-lg btn-block">Submit</button>
+                            </div>
+                            
+                        </div>
+                      </div> 
+                </form>                  
                 </div>
                 <hr>
                 <div class="container">

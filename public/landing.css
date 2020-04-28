@@ -40,18 +40,18 @@ li {
 
 
 li:nth-child(1) { 
-    background-image: url(http://i.imgur.com/K3mPv14.jpg) 
+    background-image: url(https://www.thepoortraveler.net/wp-content/uploads/2012/03/Lipa-Cathedral.jpg) 
   }
 li:nth-child(2) { 
-    background-image: url(http://i.imgur.com/SBEmFpv.jpg);
+    background-image: url(https://2.bp.blogspot.com/-9l5E2NxIyDA/UTskVFWvaII/AAAAAAAAHbA/9McV4Va6jy8/s1600/313361_10151485443458798_278798484_n.jpg);
     animation-delay: 10s; 
   }
 li:nth-child(3) { 
-    background-image: url(http://i.imgur.com/emvhOnb.jpg);
+    background-image: url(https://www.wowbatangas.com/wp-content/uploads/2019/02/Lipa-Citys-Hidden-Gem-Sitio-Tagbakin-Halang-Lipa-City-9-1024x577.jpg);
     animation-delay: 20s; 
   }
 li:nth-child(4) { 
-    background-image: url(http://i.imgur.com/2LSMCmJ.jpg);
+    background-image: url(https://www.wowbatangas.com/wp-content/uploads/2019/02/Lipa-Citys-Hidden-Gem-Sitio-Tagbakin-Halang-Lipa-City-3-1024x577.jpg);
     animation-delay: 30s; 
   }
 li:nth-child(5) { 

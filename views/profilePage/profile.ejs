@@ -1,4 +1,7 @@
 <%-include("../partials/header") %> 
+
+
+
     <div class="container">
         <div class="row mt-5">
                 <div class="col-3">
@@ -7,22 +10,56 @@
                         <img src="https://em.wattpad.com/e85d5768e73eb2b21ac669a1be3549003b84d0b8/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f776174747061642d6d656469612d736572766963652f53746f7279496d6167652f315661735531666a4f73387864773d3d2d322e313536303631326235373238393334343138343832373236393637302e6a7067?s=fit&w=720&h=720" class="card-img-top" alt="...">
                         <div class="card-body">
                           <h5 class="card-title text-center"><%=currentUser.username%></h5>
-                          <a href="#" class="btn btn-success ml-3">Change Profile Picture</a>
+
+
+                          <div class="dropdown">
+                            <button class="btn btn-success dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                              Change Profile Picture
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                              <a class="dropdown-item" href="/campgrounds/profile/<%=data._id%>/upload">Upload Photo</a>
+                              <a class="dropdown-item" href="#">Url</a>
+                            </div>
+                          </div>
+
+
+
                         </div>
 
                       <%} else { %>
-                          <%if(data.proPic == null && data.gender == "male") {%>
+                          <%if(data.proPic == undefined && data.gender == "male") {%>
                             <img src="https://em.wattpad.com/e85d5768e73eb2b21ac669a1be3549003b84d0b8/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f776174747061642d6d656469612d736572766963652f53746f7279496d6167652f315661735531666a4f73387864773d3d2d322e313536303631326235373238393334343138343832373236393637302e6a7067?s=fit&w=720&h=720" class="card-img-top" alt="...">
                             <div class="card-body">
                             <h5 class="card-title text-center"><%=data.name%></h5>
-                            <a href="#" class="btn btn-success ml-3">Change Profile Picture</a>
+                            <div class="dropdown">
+                              <button class="btn btn-success dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Change Profile Picture
+                              </button>
+                              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                <a class="dropdown-item" href="/campgrounds/profile/<%=data._id%>/upload">Upload Photo</a>
+                                <a class="dropdown-item" href="#">Url</a>
+                              </div>
+                            </div>
+
+
                             </div>
 
                           <%} else if(data.gender == "male") {%>
                             <img src="<%=data.proPic%>" class="card-img-top" alt="...">
                             <div class="card-body">
                               <h5 class="card-title text-center"><%=data.name%></h5>
-                              <a href="#" class="btn btn-success ml-3">Change Profile Picture</a>
+                              <div class="dropdown">
+                                <button class="btn btn-success dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                  Change Profile Picture
+                                </button>
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                  <a class="dropdown-item" href="/campgrounds/profile/<%=data._id%>/upload">Upload Photo</a>
+                                  <a class="dropdown-item" href="#">Url</a>
+                                </div>
+                              </div>
+
+
+
                             </div>
 
                           <%}%>
@@ -31,22 +68,54 @@
                         <img src="https://i.imgur.com/IJCvoA6.jpg" class="card-img-top" alt="...">
                         <div class="card-body">
                           <h5 class="card-title text-center"><%=currentUser.username%></h5>
-                          <a href="#" class="btn btn-success ml-3">Change Profile Picture</a>
+
+                          <div class="dropdown">
+                            <button class="btn btn-success dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                              Change Profile Picture
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                              <a class="dropdown-item" href="/campgrounds/profile/<%=data._id%>/upload">Upload Photo</a>
+                              <a class="dropdown-item" href="#">Url</a>
+                            </div>
+                          </div>
+
+
                         </div>
 
                       <%} else { %>
-                          <%if(data.proPic == null && data.gender == "female") {%>
+                          <%if(data.proPic == undefined && data.gender == "female") {%>
                             <img src="https://i.imgur.com/IJCvoA6.jpg" class="card-img-top" alt="...">
                             <div class="card-body">
                             <h5 class="card-title text-center"><%=data.name%></h5>
-                            <a href="#" class="btn btn-success ml-3">Change Profile Picture</a>
+                            <div class="dropdown">
+                              <button class="btn btn-success dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Change Profile Picture
+                              </button>
+                              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                <a class="dropdown-item" href="/campgrounds/profile/<%=data._id%>/upload">Upload Photo</a>
+                                <a class="dropdown-item" href="#">Url</a>
+                              </div>
+                            </div>
+
+
+
                             </div>
 
                           <%} else if(data.gender == "female") {%>
                             <img src="<%=data.proPic%>" class="card-img-top" alt="...">
                             <div class="card-body">
                               <h5 class="card-title text-center"><%=data.name%></h5>
-                              <a href="#" class="btn btn-success ml-3">Change Profile Picture</a>
+                              <div class="dropdown">
+                                <button class="btn btn-success dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                  Change Profile Picture
+                                </button>
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                  <a class="dropdown-item" href="/campgrounds/profile/<%=data._id%>/upload">Upload Photo</a>
+                                  <a class="dropdown-item" href="#">Url</a>
+                                </div>
+                              </div>
+
+
                             </div>
 
                           <%}%>

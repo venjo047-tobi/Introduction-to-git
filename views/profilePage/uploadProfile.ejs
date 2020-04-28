@@ -1,0 +1,28 @@
+<%-include("../partials/header") %> 
+
+    <div class="container mt-5">
+        <form action="/campgrounds/profile/<%=data.user.id%>/upload?_method=PUT" method="POST" id="form1" enctype="multipart/form-data">
+            <div class="container">
+      
+              <div class="form-group row">           
+                  <div class="col-12">
+                    <label for="newphoto">Upload Image</label>
+                    <input style="display: inline;" type="file" class="form-control" id="newphoto" name="image" accept="image/*" required>
+                  </div>           
+              </div>
+                <div class="form-group row">           
+                    <div class="col-12">
+                      <button class="btn btn-primary btn-lg btn-block">Submit</button>
+                    </div>
+                    
+                </div>
+                <a href="/campgrounds">Get Back to camp</a>
+            </div> 
+        </form>
+    </div>
+
+
+
+
+
+<%- include("../partials/normalFooter") %>

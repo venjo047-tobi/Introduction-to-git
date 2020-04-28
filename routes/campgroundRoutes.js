@@ -148,13 +148,15 @@ route.put("/:id", upload.single("image"), function(req,res) {
                             req.flash("error", err.message);
                             return res.redirect("back");
                         }
-                      }
+                    }
                       found.name = req.body.name;
                       found.description = req.body.description;
+                      found.location = req.body.location;
+
                       found.save();
                       req.flash("success","Successfully Updated!");
                       res.redirect("/campgrounds/" + found._id);
-                }
+            }
                 
             
        }
