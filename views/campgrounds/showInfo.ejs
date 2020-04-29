@@ -3,13 +3,27 @@
 <div class="container">
     <div class="row mt-4">
         <div class= "d-none d-md-block col-md-3">
-            <h1>VenjCamp</h1>
-            <ul class="list-group">
-                <li class="list-group-item active">Info 1</li>
-                <li class="list-group-item">Info 2</li>
-                <li class="list-group-item">Info 3</li>
+            <h1 class="text-center"><i class=" yeah fas fa-campground"></i>
 
-              </ul>
+              VenjCamp</h1>
+            <ul class="list-group">
+                <li class="list-group-item active text-center">Location Map</li>
+ 
+
+            </ul>
+            <div class="card mt-4 ">       
+                <!--Google map-->
+                <div id="map-container-google-8" class="z-depth-1-half map-container-5" style="height: 300px">
+                  <iframe src = "<%=url1 + campground.location + url2 %>"</iframe>
+                    frameborder="0" style="border:0" allowfullscreen></iframe>
+                </div>
+        
+                <div class="card-body">
+                  <h5 class="card-title"><%=campground.location%></h5>
+                  <a href="<%=url1 + campground.location%>" class="btn btn-success mx-auto">Google Map</a>
+                </div>
+            </div>
+
         </div>
         <div class="col-12 col-md-9">
             <div class="card" style="width: 100%;">

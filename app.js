@@ -20,12 +20,18 @@ var commentR = require("./routes/commentRoutes"),
     indexR   = require("./routes/authentication"),
     profR    = require("./routes/profileRoutes");
     
-    
+var port = process.env.PORT || 8080;
+
 // seedDb();
 mongoose.set('useUnifiedTopology', true);
 mongoose.set('useCreateIndex', true)
 mongoose.set('useFindAndModify', false);
-mongoose.connect("mongodb://localhost:/yelp_camp_refactv5", {useNewUrlParser:true})
+mongoose.connect("mongodb+srv://dbVenj:*110522*@cluster0-0ngzl.mongodb.net/test?retryWrites=true&w=majority", 
+{useNewUrlParser:true}).then(function() {
+    console.log("Db connected online")
+}).catch(function(err){
+    console.log("error:", err.message)
+})
 
 app.set("view engine" , "ejs")
 app.use(express.static("public"))
@@ -67,6 +73,6 @@ app.use(profR);
 
 
 
-app.listen(8080,function() {
+app.listen(port,function() {
     console.log("YelpcampV5 Refactor Server is OK")
 })

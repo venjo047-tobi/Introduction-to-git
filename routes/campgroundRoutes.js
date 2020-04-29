@@ -97,7 +97,12 @@ route.get("/:id", function(req,res) {
         if(err){
             console.log("error")
         } else {
-            res.render("campgrounds/showInfo", {campground:foundCampgrounds})
+            var locationUrl1 = "https://maps.google.com/maps?q=",
+                locationUrl2 = "&t=&z=13&ie=UTF8&iwloc=&output=embed";
+                console.log(locationUrl1 + foundCampgrounds.location + locationUrl2)
+            res.render("campgrounds/showInfo", {campground:foundCampgrounds,
+                                                url1: locationUrl1,
+                                                url2: locationUrl2})
         }
     })
    
