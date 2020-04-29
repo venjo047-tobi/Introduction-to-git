@@ -30,7 +30,7 @@ var cloudinary = require("cloudinary");
     cloudinary.config({
         cloud_name: "dtk1smnrj",
         api_key: 648977111317892,
-        api_secret: PkC_cnFqvex_25UtUzuySYtYMQ0
+        api_secret: process.env.api_secret
     })
 
 // INDEX ROUTE 
