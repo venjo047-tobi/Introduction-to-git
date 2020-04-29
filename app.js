@@ -34,6 +34,7 @@ mongoose.connect("mongodb+srv://dbVenj:*110522*@cluster0-0ngzl.mongodb.net/test?
 })
 
 app.set("view engine" , "ejs")
+app.set('views', path.join(__dirname, 'views'));
 app.use(express.static("public"))
 app.use(bodyParser.urlencoded({extended:true}))
 app.use(methodOvrd("_method"))
