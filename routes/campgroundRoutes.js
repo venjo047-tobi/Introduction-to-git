@@ -88,7 +88,7 @@ route.post("/", Middleware.isLoggedIn, upload.single("image"), function(req,res)
 })
 // NEW ROUTE
 route.get("/new", Middleware.isLoggedIn, function(req,res) {
-    res.render("campgrounds/CampgroundsNew")
+    res.render("campgrounds/campgroundsNew")
 })
 
 // SHOW ROUTE
