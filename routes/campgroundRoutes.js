@@ -40,7 +40,7 @@ route.get("/", function(req,res) {
             console.log("error")
         } else {
             
-            res.render("/campgrounds/campgrounds", {camps:camp})
+            res.render("campgrounds/campgrounds", {camps:camp})
         }
     })
    
