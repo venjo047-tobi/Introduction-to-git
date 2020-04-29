@@ -28,9 +28,9 @@ var upload = multer(
 
 var cloudinary = require("cloudinary");
     cloudinary.config({
-        cloud_name: "dtk1smnrj",
-        api_key: "648977111317892",
-        api_secret: "PkC_cnFqvex-25UtUzuySYtYMQ0"
+        cloud_name: process.env.CLOUD_NAME,
+        api_key: process.env.API_KEY,
+        api_secret: process.env.API_SECRET
     })
 
 // INDEX ROUTE 
