@@ -20,6 +20,8 @@ var imageFilter = function(req,file,cb) {
     cb(null,true)
 }
 
+var api_secret = " PkC_cnFqvex-25UtUzuySYtYMQ0"
+
 
 var upload = multer(
     {   storage:storage,
@@ -29,7 +31,7 @@ var upload = multer(
 var cloudinary = require("cloudinary");
     cloudinary.config({
         cloud_name: "dtk1smnrj",
-        api_key: api_key,
+        api_key: 648977111317892,
         api_secret: api_secret
     })
 
