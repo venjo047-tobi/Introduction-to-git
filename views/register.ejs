@@ -1,10 +1,10 @@
 <%- include("./partials/header") %>
-
-<div class="formBox mt-5">
+<div class="container">
+  <div class="formBox mt-5">
     <h1 class="display-4 text-center">Register</h1>
     <hr>
 
-    <form class="mx-auto" action="/register" method="POST" style="width: 500px;">
+    <form class="mx-auto" action="/register" method="POST" style="width: 100%;">
         <div class="form-group">
             <input type="text" name="fullname" placeholder="Full Name" class="form-control">
         </div>
@@ -48,14 +48,8 @@
 
       <%} %>
 </div>
+</div>
 
 
-
-<!-- <form >
-    <input type="text" name="username">
-    <input type="password" name="password">
-    <button>Submit</button>
-
-</form> -->
 
 <%- include("./partials/normalFooter") %>

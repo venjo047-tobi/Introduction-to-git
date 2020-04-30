@@ -4,17 +4,17 @@
     <div class="row">
         <div class="col-12">
             <div class="formBox mt-5">
-                <h1 class="display-4 text-center">VenjCamp Login</h1>
+                <h1 class="display-4 text-center">Login</h1>
                 <hr>
         
-                <form class="mx-auto" action="/login" method="POST" style="width: 500px;">
+                <form class="mx-auto" action="/login" method="POST" style="width: 100%;">
                     <div class="form-group">
-                        <input type="text" name="username" placeholder="Username" class="form-control">
+                        <input type="text" name="username" placeholder="Username" class="form-control" >
                     </div>
                     <div class="form-group">
                         <input type="password" name="password" placeholder="Password" class="form-control">
                     </div>
-                    <button class="btn btn-primary">Submit</button>
+                    <button class="btn btn-success">Submit</button>
                 </form>
                   <%if(success && success.length > 0) {%>
                     <div class="alert alert-success mt-5" role="alert">

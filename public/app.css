@@ -58,8 +58,10 @@ i.yeah {
 }
 
 .formBox {
-    border: 1px solid gray;
+    margin: 0 auto;
+    width: 400px;
     padding: 2%;
+    box-sizing: border-box;
 }
 
 .map-container-5{
