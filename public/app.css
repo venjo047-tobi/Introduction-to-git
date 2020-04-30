@@ -58,12 +58,12 @@ i.yeah {
 }
 input {
     box-sizing: border-box;
-    width: 100%;
+    max-width: 100%;
 }
 .formBox {
     
     margin: 0 auto;
-    width: 400px;
+    max-width: 100%;
     padding: 2%;
 }
 
