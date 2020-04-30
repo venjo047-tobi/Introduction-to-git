@@ -6,6 +6,10 @@ footer.jumbotron {
     border-radius: 0;
 }
 
+header .jumbotron {
+padding: 0%;
+}
+
 footer a {
     color: white;
 }
