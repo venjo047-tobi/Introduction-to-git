@@ -49,7 +49,7 @@ i.yeah {
 }
 
 #form1 {
-    width: 450px;
+    max-width: 100%;
     margin: 0 auto;
 }
 
