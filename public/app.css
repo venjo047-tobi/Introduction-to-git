@@ -56,12 +56,15 @@ i.yeah {
 .bg-custom {
     background-color: #EEF1EC;
 }
-
+input {
+    box-sizing: border-box;
+    width: 100%;
+}
 .formBox {
+    
     margin: 0 auto;
     width: 400px;
     padding: 2%;
-    box-sizing: border-box;
 }
 
 .map-container-5{
