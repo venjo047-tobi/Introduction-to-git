@@ -1,4 +1,23 @@
 <%- include("../partials/header") %>
+   <!-- You can use Open Graph tags to customize link previews.
+    Learn more: https://developers.facebook.com/docs/sharing/webmasters -->
+    <meta property="og:url"           content="https://mysterious-sands-06059.herokuapp.com/campgrounds" />
+    <meta property="og:type"          content="website" />
+    <meta property="og:title"         content="VenjCamp">
+    <meta property="og:description"   content="<%=campground.description%>" />
+    <meta property="og:image"         content="https://mysterious-sands-06059.herokuapp.com/campgrounds/campground._id" />
+
+
+      <!-- Load Facebook SDK for JavaScript -->
+  <div id="fb-root"></div>
+  <script>(function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.0";
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));</script>
+
 
 <div class="container">
     <div class="row mt-4">
@@ -30,6 +49,10 @@
                   <h4 class="card-text"><a href=""><%= campground.name %></a></h4>
                   <div class="showButtons">
                     <% if(currentUser && currentUser._id.equals(campground.user.id) ) { %>
+                      <div class="fb-share-button" 
+                         data-href="https://mysterious-sands-06059.herokuapp.com/campgrounds" 
+                         data-layout="button">
+                      </div>
                       <a class="btn btn-warning" href="/campgrounds/<%=campground._id %>/edit">Edit Post</a>
                       <form action="/campgrounds/<%=campground._id%>?_method=DELETE" method="POST" style="display: inline;">
                           <button class="btn btn-danger">Delete</button>

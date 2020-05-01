@@ -100,4 +100,9 @@ route.put("/campgrounds/profile/:profileid/upload", middleware.isLoggedIn, uploa
     })
 })
 
+
+route.get("/portfolio", function(req,res) {
+    res.render("Portfolio/Portfolio")
+})
+
 module.exports = route
