@@ -49,7 +49,7 @@
                   <h4 class="card-text"><a href=""><%= campground.name %></a></h4>
                   <div class="showButtons">
                     <div class="fb-share-button" 
-                      data-href="https://mysterious-sands-06059.herokuapp.com/campgrounds/campground._id" 
+                      data-href="https://mysterious-sands-06059.herokuapp.com/campgrounds/<%=campground._id%>" 
                       data-layout="button">
                     </div>
                     <% if(currentUser && currentUser._id.equals(campground.user.id) ) { %>
