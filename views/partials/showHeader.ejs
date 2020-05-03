@@ -9,8 +9,16 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" href="/app.css">
     <script src="https://kit.fontawesome.com/6a843c9c35.js" crossorigin="anonymous"></script>
-
-    <title>VenjCamp</title>
+    <div id="fb-root"></div>
+    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v6.0"></script>
+    <title></title>
+       <!-- You can use Open Graph tags to customize link previews.
+    Learn more: https://developers.facebook.com/docs/sharing/webmasters -->
+    <meta property="og:url"           content="https://mysterious-sands-06059.herokuapp.com/campgrounds/<%=campground._id%>" />
+    <meta property="og:type"          content="website" />
+    <meta property="og:title"         content="Awesome">
+    <meta property="og:description"   content="<%=campground.description%>" />
+    <meta property="og:image"         content="https://mysterious-sands-06059.herokuapp.com/campgrounds/<%=campground._id%>" />
 
     
   </head>
@@ -51,6 +59,5 @@
           
         </div>
       </nav>
-
 
 

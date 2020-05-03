@@ -1,22 +1,8 @@
-<%- include("../partials/header") %>
-   <!-- You can use Open Graph tags to customize link previews.
-    Learn more: https://developers.facebook.com/docs/sharing/webmasters -->
-    <meta property="og:url"           content="https://mysterious-sands-06059.herokuapp.com/campgrounds" />
-    <meta property="og:type"          content="website" />
-    <meta property="og:title"         content="VenjCamp">
-    <meta property="og:description"   content="<%=campground.description%>" />
-    <meta property="og:image"         content="https://mysterious-sands-06059.herokuapp.com/campgrounds/<%=campground._id%>" />
+<%- include("../partials/showHeader") %>
 
 
-      <!-- Load Facebook SDK for JavaScript -->
-  <div id="fb-root"></div>
-  <script>(function(d, s, id) {
-    var js, fjs = d.getElementsByTagName(s)[0];
-    if (d.getElementById(id)) return;
-    js = d.createElement(s); js.id = id;
-    js.src = "https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.0";
-    fjs.parentNode.insertBefore(js, fjs);
-  }(document, 'script', 'facebook-jssdk'));</script>
+<div id="fb-root"></div>
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v6.0"></script>
 
 
 <div class="container">
@@ -49,9 +35,11 @@
                   <h4 class="card-text"><a href=""><%= campground.name %></a></h4>
                   <div class="showButtons">
                     <div class="fb-share-button" 
-                      data-href="https://mysterious-sands-06059.herokuapp.com/campgrounds/<%=campground._id%>" 
-                      data-layout="button">
-                    </div>
+                        data-href="https://mysterious-sands-06059.herokuapp.com/campgrounds/<%=campground._id%>" 
+                        data-layout="button_count" data-size="small"><a target="_blank" 
+                        href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fmysterious-sands-06059.herokuapp.com%2Fcampgrounds&amp;src=sdkpreparse" 
+                        class="fb-xfbml-parse-ignore">Share</a>
+                      </div>
                     <% if(currentUser && currentUser._id.equals(campground.user.id) ) { %>
 
                       <a class="btn btn-warning" href="/campgrounds/<%=campground._id%>/edit">Edit Post</a>
