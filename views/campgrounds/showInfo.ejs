@@ -34,17 +34,12 @@
                 <div class="card-body">
                   <h4 class="card-text"><a href=""><%= campground.name %></a></h4>
                   <div class="showButtons">
-                    <div class="fb-share-button" 
-                        data-href="https://mysterious-sands-06059.herokuapp.com/campgrounds/<%=campground._id%>" 
-                        data-layout="button_count" data-size="small"><a target="_blank" 
-                        href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fmysterious-sands-06059.herokuapp.com%2Fcampgrounds&amp;src=sdkpreparse" 
-                        class="fb-xfbml-parse-ignore">Share</a>
-                      </div>
+
                     <% if(currentUser && currentUser._id.equals(campground.user.id) ) { %>
 
-                      <a class="btn btn-warning" href="/campgrounds/<%=campground._id%>/edit">Edit Post</a>
+                      <a class="btn btn-warning btn-sm" href="/campgrounds/<%=campground._id%>/edit">Edit Post</a>
                       <form action="/campgrounds/<%=campground._id%>?_method=DELETE" method="POST" style="display: inline;">
-                          <button class="btn btn-danger">Delete</button>
+                          <button class="btn btn-danger btn-sm">Delete</button>
                       </form>
                     <% } else { %>
   
@@ -57,7 +52,12 @@
 
 
                   <p class="">Description: <br> <%= campground.description %> </p>
-
+                  <div class="fb-share-button" 
+                      data-href="https://mysterious-sands-06059.herokuapp.com/campgrounds/<%=campground._id%>" 
+                      data-layout="button_count" data-size="large"><a target="_blank" 
+                      href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fmysterious-sands-06059.herokuapp.com%2Fcampgrounds&amp;src=sdkpreparse" 
+                      class="fb-xfbml-parse-ignore">Share</a>
+                  </div>
 
                 </div>
               </div>
